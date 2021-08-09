@@ -1,0 +1,25 @@
+{
+  "name": "displaymap",
+  "version": "1.0.0",
+  "description": "display map for Taxi Service",
+  "main": "index.js",
+  "author": "Cheng Yang ",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "concurrently": "^6.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "http-proxy-middleware": "^2.0.1",
+    "https": "^1.0.0",
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "start": "node ./bin/www",
+    "client": "yarn --cwd ./client run dev",
+    "server": "NODE_ENV=dev nodemon index.js --ignore client",
+    "dev": "concurrently -k \"yarn run client \" \"yarn run server\" "
+  }
+}
