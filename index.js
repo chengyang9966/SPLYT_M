@@ -38,6 +38,7 @@ app.get('/api/getLocation',ProxySetup,(req,res)=>{
     axios.get(URLString).then(respone=>{
         res.status(200).json(respone.data)
     }).catch(error => {
+        res.status(400).json({message:'error'})
         console.log(error);
       });
 
@@ -61,15 +62,22 @@ app.post('/api/login',ProxySetup,(req,res)=>{
         })
     }
     ComparePassword(password,HashPassword).then(respone=>{
-        let accessToken =jwtTokenSign(username)
-        res.status(200).json({
-            username,
-            password,
-            accessToken,
-            message:"Login Success"
-        })
+        console.log('respone: ', respone);
+        if(respone===false){
+            res.status(401).json({
+                message:'Wrong Password'
+            })
+        }else{
+            let accessToken =jwtTokenSign(username)
+            res.status(200).json({
+                username,
+                password,
+                accessToken,
+                message:"Login Success"
+            })
+        }
     }).catch(error=>{
-        res.status(400).json({
+        res.status(401).json({
             message:'Wrong Password'
         })
     })
@@ -77,7 +85,6 @@ app.post('/api/login',ProxySetup,(req,res)=>{
     
 })
 app.post('/api/register',ProxySetup,(req,res)=>{
-    console.log('req.body: ', req.body);
     const {username,password}=req.body
     if(!username){
         res.status(400).json({
