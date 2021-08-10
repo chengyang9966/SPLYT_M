@@ -18,9 +18,12 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "client": "yarn --cwd ./client run dev",
-    "server": "NODE_ENV=dev nodemon index.js --ignore client",
-    "dev": "concurrently -k \"yarn run client \" \"yarn run server\" ",
+    "client_mac": "yarn --cwd ./client run dev_mac",
+    "client_win": "yarn --cwd ./client run dev_win",
+    "server_win": "SET NODE_ENV=dev && nodemon index.js && --ignore client",
+    "server_mac": "NODE_ENV=dev nodemon index.js --ignore client",
+    "dev_mac": "concurrently -k \"yarn run client_mac \" \"yarn run server_mac\" ",
+    "dev_win": "concurrently -k \"yarn run client_win \" \"yarn run server_win\" ",
     "postinstall": "cd ./client && yarn install"
   }
 }
