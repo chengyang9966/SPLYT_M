@@ -10,11 +10,11 @@ git fetch origin main
 ::Update and initialize all submodules source 
 git submodule update --init --recursive 
 
-:: Switch all submodules to master branch
-:: git submodule foreach git checkout origin master
+:: Switch all submodules to main branch
+git submodule foreach git checkout origin main
 
-::Pull all submodules from master branch 
-::git submodule foreach git pull origin master 
+::Pull all submodules from main branch 
+git submodule foreach git pull origin main 
 
 
 
