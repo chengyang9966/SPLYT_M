@@ -1,8 +1,8 @@
 ::Pull from SPLYT_MAP
-git clone https://github.com/chengyang9966/SPLYT_Map.git
+git clone https://github.com/chengyang9966/SPLYT_M.git
 
-::SPLYT_Map File 
-cd SPLYT_Map 
+::SPLYT_M File 
+cd SPLYT_M 
 
 ::Fetch From Main Branch
 git fetch origin main 
